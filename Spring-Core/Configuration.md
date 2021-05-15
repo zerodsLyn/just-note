@@ -151,7 +151,7 @@ public @interface Configuration {
 
 这种方法通常与Spring的`PropertySourcesPlaceholderConfigurer`结合使用，可以通过`<context:property-placeholder />`在XML配置中自动启用，也可以通过专用的静态`@Bean`方法在`@Configuration`类中显式启用该方法（请参阅“关于`BeanFactoryPostProcessor-returning`的说明`@Bean`的javadocs中的“ `@Bean`方法”）。
 
-但是请注意，通常仅在需要自定义配置（例如占位符语法等）时，才需要通过静态`@Bean`方法显式注册`PropertySourcesPlaceholderConfigurer`。特别是，如果未注册任何bean后处理器（例如`PropertySourcesPlaceholderConfigurer`）作为`ApplicationContext`的内置值解析器，Spring将注册一个默认的内置值解析器，该解析器根据环境中注册的属性源解析占位符。请参见以下有关使用`@ImportResource`与Spring XML组合`@Configuration`类的部分；参见`@Value` javadocs;并请参阅`@Bean `javadocs，以获取有关使用`BeanFactoryPostProcessor`类型（例如PropertySourcesPlaceholderConfigurer）的详细信息。
+但是请注意，通常仅在需要自定义配置（例如占位符语法等）时，才需要通过静态`@Bean`方法显式注册`PropertySourcesPlaceholderConfigurer`。特别是，如果未注册任何bean后处理器（例如`PropertySourcesPlaceholderConfigurer`）作为`ApplicationContext`的内置值解析器，Spring将注册一个默认的内置值解析器，该解析器根据环境中注册的属性源解析占位符。请参见以下有关使用`@ImportResource`与Spring XML组合`@Configuration`类的部分；参见`@Value` javadocs;并请参阅`@Bean `javadocs，以获取有关使用`BeanFactoryPostProcessor`类型（例如`PropertySourcesPlaceholderConfigurer`）的详细信息。
 
 
 
@@ -191,7 +191,7 @@ public @interface Configuration {
  }
 ```
 
-现在可以通过仅在Spring上下文中注册AppConfig来引导AppConfig和导入的DatabaseConfig。
+现在可以通过仅在Spring上下文中注册`AppConfig`来引导`AppConfig`和导入的`DatabaseConfig`。
 
 ```java
  new AnnotationConfigApplicationContext(AppConfig.class);
@@ -289,7 +289,7 @@ public @interface Configuration {
 
 这样写时，仅需要针对应用程序上下文注册AppConfig。由于是嵌套的`@Configuration`类，因此将自动注册`DatabaseConfig`。当`AppConfig`和`DatabaseConfig`之间的关系已经隐式清除时，这避免了使用`@Import`注解的需要。
 
-还要注意，嵌套的``@Configuration`类可以与`@Profile`一起使用，来为`@Configuration`类提供同一bean的两个选项。
+还要注意，嵌套的`@Configuration`类可以与`@Profile`一起使用，来为`@Configuration`类提供同一bean的两个选项。
 
 ## 4 `@Configuration`懒初始化
 
