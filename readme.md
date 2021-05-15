@@ -1,0 +1,2 @@
+# Read me
+MY PERSONAL TECH NOTES
